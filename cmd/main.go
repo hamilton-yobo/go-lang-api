@@ -5,6 +5,7 @@ import (
 
 	"go-api/controller"
 	"go-api/db"
+	"go-api/repository"
 	"go-api/usecase"
 )
 
@@ -17,7 +18,9 @@ func main() {
 		panic(err)
 	}
 
-	ProductUseCase := usecase.NewProductUseCase()
+	// Camada repository
+	ProductRepository := repository.NewProductRepository(dbConnection)
+	ProductUseCase := usecase.NewProductUseCase(ProductRepository)
 	// Camada de controllers
 	ProductController := controller.NewProductContoller(ProductUseCase)
 
