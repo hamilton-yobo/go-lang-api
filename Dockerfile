@@ -10,7 +10,7 @@ copy . .
 EXPOSE 8000
 
 # Build the Go app
-RUN go buil -o main cmd/main.go
+RUN go build -o main cmd/main.go
 
 # Run the executable
 CMD ["./main"]
